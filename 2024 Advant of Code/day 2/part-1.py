@@ -1,14 +1,8 @@
 def is_safe(levels):
-    # Convert string numbers to integers
-    nums = []
-    for num in levels:
-        num = int(num)
-        nums.append(num)
-    
     # Calculate differences between adjacent numbers
     differences = []
-    for i in range(len(nums) - 1):
-        difference = nums[i + 1] - nums[i]
+    for i in range(len(levels) - 1):
+        difference = levels[i + 1] - levels[i]
         differences.append(difference)
     
     # Check if sequence is strictly increasing
@@ -33,7 +27,7 @@ safe_count = 0
 file = open("input.txt", "r")
 
 for line in file:
-    report = line.strip().split()
+    report = [int(num) for num in line.strip().split()] # Convert string numbers to integers
     if is_safe(report):
         safe_count += 1
 
